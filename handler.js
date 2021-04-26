@@ -60,7 +60,7 @@ app.post("/users", async function (req, res) {
 
 app.post("/products", async function (req, res) {
   const { productId, name, description } = req.body;
-  if (typeof userId !== "string") {
+  if (typeof productId !== "string") {
     res.status(400).json({ error: '"productId" must be a string' });
   } else if (typeof name !== "string") {
     res.status(400).json({ error: '"name" must be a string' });
@@ -80,7 +80,7 @@ app.post("/products", async function (req, res) {
     res.json({ property, name });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: "Could not create user" });
+    res.status(500).json({ error: "Could not create product" });
   }
 });
 
