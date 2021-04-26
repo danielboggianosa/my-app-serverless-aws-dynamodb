@@ -6,6 +6,7 @@ frameworkVersion: '2'
 
 custom:
   tableName: 'users-table-${self:provider.stage}'
+  products: 'products-table-${self:provider.stage}'
 
 provider:
   name: aws
@@ -54,3 +55,16 @@ resources:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
         TableName: ${self:custom.tableName}
+    ProductsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: productId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: productId
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:custom.products}
