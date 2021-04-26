@@ -2,9 +2,26 @@
   "name": "aws-node-express-dynamodb-api",
   "version": "1.0.0",
   "description": "",
+  "scripts": {
+    "test": "jest",
+    "coverage": "jest --coverage"
+  },
   "dependencies": {
     "express": "^4.17.1",
     "serverless-http": "^2.7.0",
-    "swapi-node": "^0.6.0"
+    "swapi-node": "^0.6.0",
+    "translate": "^1.2.3"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{js}",
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!**/coverage/**"
+    ],
+    "testURL": "http://localhost/"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3"
   }
 }
