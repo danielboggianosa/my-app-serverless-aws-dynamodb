@@ -26,8 +26,19 @@ provider:
             - dynamodb:DeleteItem
           Resource:
             - Fn::GetAtt: [ UsersTable, Arn ]
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource:
+            - Fn::GetAtt: [ ProductsTable, Arn ]
   environment:
     USERS_TABLE: ${self:custom.tableName}
+    PRODUCTS_TABLE: ${self:custom.products}
 
 functions:
   api:
